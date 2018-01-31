@@ -1,0 +1,41 @@
+{
+  "name": "koa-accepts",
+  "version": "0.0.1",
+  "description": "Adjust content type based on accepts header",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo ok",
+    "tsc:build": "rm -rf dist; tsc",
+    "tsc:watch": "tsc -w",
+    "prepublish": "npm run tsc:build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/radiosilence/koa-accepts.git"
+  },
+  "keywords": [
+    "koa",
+    "accepts",
+    "http"
+  ],
+  "author": "James Cleveland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radiosilence/koa-accepts/issues"
+  },
+  "homepage": "https://github.com/radiosilence/koa-accepts#readme",
+  "dependencies": {
+    "@types/js-yaml": "3.10.1",
+    "@types/koa": "2.0.43",
+    "@types/msgpack-lite": "0.1.6",
+    "js-yaml": "3.10.0",
+    "koa": "2.4.1",
+    "msgpack-lite": "0.1.26"
+  },
+  "devDependencies": {
+    "@types/jest": "22.1.1",
+    "tslint": "5.9.1",
+    "tslint-config-airbnb": "5.5.0",
+    "typescript": "2.6.2"
+  }
+}
