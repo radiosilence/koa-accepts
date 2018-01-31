@@ -1,13 +1,13 @@
 {
   "name": "koa-accepts",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Adjust content type based on accepts header",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "tsc:build": "rm -rf dist; tsc",
     "tsc:watch": "tsc -w",
-    "prepublish": "npm run tsc:build"
+    "prepublish": "npm test && npm run tsc:build"
   },
   "repository": {
     "type": "git",

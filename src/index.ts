@@ -2,7 +2,7 @@ import { Context } from 'koa'
 import * as yaml from 'js-yaml'
 import * as msgpack from 'msgpack-lite'
 
-export default () => async (ctx: Context, next: () => void) => {
+export const accepts = () => async (ctx: Context, next: () => void) => {
     await next()
     const accept: string = ctx.headers.accept || 'application/json'
     if (typeof ctx.body === 'string') return
