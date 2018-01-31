@@ -1,5 +1,5 @@
 {
-  "name": "koa-accept",
+  "name": "koa-accepts",
   "version": "0.1.0",
   "description": "Adjust content type based on accepts header",
   "main": "index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/radiosilence/koa-accept.git"
+    "url": "git+ssh://git@github.com/radiosilence/koa-accepts.git"
   },
   "keywords": [
     "koa",
@@ -21,9 +21,9 @@
   "author": "James Cleveland",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/radiosilence/koa-accept/issues"
+    "url": "https://github.com/radiosilence/koa-accepts/issues"
   },
-  "homepage": "https://github.com/radiosilence/koa-accept#readme",
+  "homepage": "https://github.com/radiosilence/koa-accepts#readme",
   "dependencies": {
     "@types/js-yaml": "3.10.1",
     "@types/koa": "2.0.43",
