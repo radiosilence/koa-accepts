@@ -21,6 +21,7 @@ describe('accepts', () => {
     it('should ignore string', async () => {
         const ctx: any = {
             body: 'hello',
+            headers: {},
         }
         await accepts()(ctx, nxt)
         expect(ctx.body).toEqual('hello')
