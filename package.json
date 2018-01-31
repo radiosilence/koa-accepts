@@ -4,7 +4,7 @@
   "description": "Adjust content type based on accepts header",
   "main": "index.js",
   "scripts": {
-    "test": "echo ok",
+    "test": "jest",
     "tsc:build": "rm -rf dist; tsc",
     "tsc:watch": "tsc -w",
     "prepublish": "npm run tsc:build"
@@ -34,6 +34,8 @@
   },
   "devDependencies": {
     "@types/jest": "22.1.1",
+    "jest": "22.1.4",
+    "ts-jest": "22.0.2",
     "tslint": "5.9.1",
     "tslint-config-airbnb": "5.5.0",
     "typescript": "2.6.2"

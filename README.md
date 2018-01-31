@@ -1,5 +1,6 @@
 # koa-accepts
 
+[![CircleCI](https://circleci.com/gh/radiosilence/koa-accepts.svg?style=shield)](https://circleci.com/gh/radiosilence/koa-accepts)
 
 Simple middleware to change the format of your response based on the HTTP accept header.
 

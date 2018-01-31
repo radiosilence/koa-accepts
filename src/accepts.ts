@@ -9,7 +9,7 @@ export default () => async (ctx: Context, next: () => void) => {
     const safeBody = JSON.parse(JSON.stringify(ctx.body))
     if (accept.includes('application/yaml')) {
         ctx.type = 'application/yaml'
-        ctx.body = `${yaml.safeDump(safeBody)}\n`
+        ctx.body = yaml.safeDump(safeBody)
     } else if (accept.includes('application/x-msgpack')) {
         ctx.type = 'application/x-msgpack'
         ctx.body = msgpack.encode(safeBody)
