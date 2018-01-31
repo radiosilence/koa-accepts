@@ -1,4 +1,4 @@
-import accepts from '../src/accepts'
+import accepts from '../src'
 import * as yaml from 'js-yaml'
 import * as msgpack from 'msgpack-lite'
 

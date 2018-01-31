@@ -1,1 +1,1 @@
-export * from './src/accepts'
+export * from './src'
