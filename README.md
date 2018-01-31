@@ -15,7 +15,7 @@ If anything else it will fall back to doing what koa normally does (JSON).
 
 ```ts
 import * as koa from 'koa'
-import * as accepts from 'koa-accepts'
+import { accepts } from 'koa-accepts'
 
 const app = new Koa()
 
