@@ -1,7 +1,7 @@
-# koa-accepts
+# koa-accept
 
 
-Simple middleware to change the format of your response based on the HTTP accepts header.
+Simple middleware to change the format of your response based on the HTTP accept header.
 
 Supported formats:
 
@@ -14,9 +14,9 @@ If anything else it will fall back to doing what koa normally does (JSON).
 
 ```ts
 import * as koa from 'koa'
-import * as accepts from 'koa-accepts'
+import * as accept from 'koa-accept'
 
 const app = new Koa()
 
-app.use(accepts())
+app.use(accept())
 ```
