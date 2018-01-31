@@ -4,8 +4,9 @@
     "outDir": "./dist",
     "sourceMap": true,
     "module": "commonjs",
-    "target": "es2017",
+    "target": "es5",
     "noImplicitAny": true,
+    "strictNullChecks": true,
     "importHelpers": true,
     "jsx": "react",
     "baseUrl": "./src",
@@ -23,7 +24,9 @@
   },
   "include": [
     "./src/**/*.tsx",
-    "./src/**/*.ts",
-    "./typings/**/*.ts"
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
