@@ -9,7 +9,7 @@ import { AVAILABLE_TYPES } from './constants'
 import { AvailableTypes } from './interfaces'
 import { clean } from './utils'
 
-export const accepts = () => async (ctx: Context, next: () => void): Promise<void> => {
+export default () => async (ctx: Context, next: () => void): Promise<void> => {
     await next()
 
     if (typeof ctx.body === 'string' || ctx.body instanceof Buffer) return
