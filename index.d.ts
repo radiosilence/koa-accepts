@@ -1,3 +1,2 @@
-import accepts from './src'
-
+import { accepts } from './src/accepts'
 export default accepts
