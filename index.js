@@ -6,4 +6,4 @@ function __export(m) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 
-__export(require("./dist/accepts").accepts);
+__export(require("./dist/index").accepts);
