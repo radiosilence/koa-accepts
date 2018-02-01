@@ -1,35 +1,35 @@
+import { intersection } from 'lodash'
+
 import { Context } from 'koa'
 import * as yaml from 'js-yaml'
 import * as msgpack from 'msgpack-lite'
-import { mediaTypes } from 'accept'
+import * as Negotiator from 'negotiator'
 
-export const accepts = () => async (ctx: Context, next: () => void): Promise<void> => {
+export interface AvailableTypes {
+    [key: string]: (body: object) => string | Buffer
+}
+
+export const AVAILABLE_TYPES: AvailableTypes = {
+    'application/yaml': (body: object) => yaml.safeDump(body),
+    'application/x-msgpack': (body: object) => msgpack.encode(body),
+}
+
+export const clean = (body: object): object => JSON.parse(JSON.stringify(body))
+
+export default () => async (ctx: Context, next: () => void): Promise<void> => {
     await next()
 
-    if (typeof ctx.body === 'string') return
+    if (typeof ctx.body === 'string' || ctx.body instanceof Buffer) return
 
     // Parse using accept lib to process the weightings
-    const accept = mediaTypes(ctx.headers.accept)
+    const negotiator = new Negotiator(ctx)
+    const mediaType: keyof AvailableTypes | undefined = intersection(
+        negotiator.mediaTypes(),
+        Object.keys(AVAILABLE_TYPES),
+    )[0]
 
-    // Remove "undefined" values
-    const safeBody = JSON.parse(JSON.stringify(ctx.body))
+    if (mediaType === undefined) return
 
-    for (let idx = 0; idx < accept.length; idx++) {
-        const mediaType = accept[idx]
-
-        // YAML
-        if (mediaType === 'application/yaml') {
-            ctx.type = 'application/yaml'
-            ctx.body = yaml.safeDump(safeBody)
-            break
-        }
-
-        // MessagePack
-        if (mediaType === 'application/x-msgpack') {
-            ctx.type = 'application/x-msgpack'
-            ctx.body = msgpack.encode(safeBody)
-            break
-        }
-
-    }
+    ctx.body = AVAILABLE_TYPES[mediaType](clean(ctx.body))
+    ctx.type = mediaType
 }

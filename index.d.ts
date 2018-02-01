@@ -1,3 +1,3 @@
-export * from './src'
+import accepts from './src'
 
-declare module 'accept'
+export default accepts
