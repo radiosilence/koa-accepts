@@ -2,7 +2,6 @@ import { intersection } from 'lodash'
 import { Context } from 'koa'
 import * as Negotiator from 'negotiator'
 
-export * from './accept'
 export * from './interfaces'
 export * from './utils'
 
