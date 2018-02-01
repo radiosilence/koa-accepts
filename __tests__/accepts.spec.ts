@@ -1,4 +1,4 @@
-import accepts from '../src'
+import { accepts } from '../src'
 import * as yaml from 'js-yaml'
 import * as msgpack from 'msgpack-lite'
 
@@ -144,4 +144,15 @@ describe('accepts', () => {
         expect(ctx.body).toEqual(msgpack.encode({ hi: 'ho', foo: { a: 1 } }))
     })
 
+    it('should encode yaml dates properly', async () => {
+        const now = new Date()
+        const ctx: any = {
+            headers: { accept: 'application/yaml' },
+            body: { now },
+        }
+
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual('application/yaml')
+        expect(ctx.body).toEqual(yaml.safeDump({ now: now.toISOString() }))
+    })
 })
