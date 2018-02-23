@@ -1,6 +1,7 @@
 import accepts from '../src'
 import * as yaml from 'js-yaml'
 import * as msgpack from 'msgpack-lite'
+import * as xml from 'jsontoxml'
 
 const nxt = () => null
 
@@ -52,6 +53,16 @@ describe('accepts', () => {
         await accepts()(ctx, nxt)
         expect(ctx.type).toEqual('application/x-msgpack')
         expect(ctx.body).toEqual(msgpack.encode({ hi: 'ho' }))
+    })
+
+    it('should encode xml', async () => {
+        const ctx: any = {
+            headers: { accept: 'application/xml' },
+            body: { hi: 'ho' },
+        }
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual('application/xml')
+        expect(ctx.body).toEqual(xml({ hi: 'ho' }))
     })
 
     it('should respect msgpack priority', async () => {
