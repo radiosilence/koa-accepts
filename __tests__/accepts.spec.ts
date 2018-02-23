@@ -1,7 +1,8 @@
 import accepts from '../src'
 import * as yaml from 'js-yaml'
 import * as msgpack from 'msgpack-lite'
-import * as xml from 'jsontoxml'
+
+const xml = require('jsontoxml')
 
 const nxt = () => null
 

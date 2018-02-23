@@ -2,7 +2,8 @@ import { AvailableTypes } from './interfaces'
 
 import * as yaml from 'js-yaml'
 import * as msgpack from 'msgpack-lite'
-import * as xml from 'jsontoxml'
+
+const xml = require('jsontoxml')
 
 export const AVAILABLE_TYPES: AvailableTypes = {
     'application/yaml': yaml.safeDump,

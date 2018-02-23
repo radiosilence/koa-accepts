@@ -1,6 +1,6 @@
 {
   "name": "koa-accepts",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Adjust content type based on accepts header",
   "main": "index.js",
   "scripts": {
