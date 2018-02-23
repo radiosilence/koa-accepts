@@ -7,8 +7,7 @@
     "test": "jest",
     "tsc:build": "rm -rf dist; tsc",
     "tsc:watch": "tsc -w",
-    "prepublish": "ts-node src/scratch.ts",
-    "scratch": "ts-node src/scratch.ts"
+    "prepublish": "npm test && npm run tsc:build"
   },
   "repository": {
     "type": "git",
