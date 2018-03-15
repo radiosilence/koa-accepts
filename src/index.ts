@@ -12,7 +12,7 @@ import { clean } from './utils'
 export default () => async (ctx: Context, next: () => void): Promise<void> => {
     await next()
 
-    if (typeof ctx.body === 'string' || ctx.body instanceof Buffer) return
+    if (ctx.body instanceof Buffer || typeof ctx.body !== 'object') return
 
     // Parse using negotiator to process the weightings
     const negotiator = new Negotiator(ctx)

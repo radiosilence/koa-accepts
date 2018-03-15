@@ -167,4 +167,74 @@ describe('accepts', () => {
         expect(ctx.type).toEqual('application/yaml')
         expect(ctx.body).toEqual(yaml.safeDump({ now: now.toISOString() }))
     })
+
+    it('should handle undefined values gracefully by doing nothing', async () => {
+        const ctx: any = {
+            headers: { accept: 'application/yaml' },
+            body: undefined,
+        }
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual(undefined)
+        expect(ctx.body).toEqual(undefined)
+    })
+
+    it('should handle string values gracefully by doing nothing', async () => {
+        const ctx: any = {
+            headers: { accept: 'application/yaml' },
+            body: 'hello',
+        }
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual(undefined)
+        expect(ctx.body).toEqual('hello')
+    })
+
+    it('should handle number values gracefully by doing nothing', async () => {
+        const ctx: any = {
+            headers: { accept: 'application/yaml' },
+            body: 1.0,
+        }
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual(undefined)
+        expect(ctx.body).toEqual(1.0)
+    })
+
+    it('should handle null values in yaml', async () => {
+        const ctx: any = {
+            headers: { accept: 'application/yaml' },
+            body: null,
+        }
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual('application/yaml')
+        expect(ctx.body).toEqual(yaml.safeDump(null))
+    })
+
+    it('should handle null values in json', async () => {
+        const ctx: any = {
+            headers: { accept: 'application/json' },
+            body: null,
+        }
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual('application/json')
+        expect(ctx.body).toEqual(JSON.stringify(null))
+    })
+
+    it('should handle null values in msgpack', async () => {
+        const ctx: any = {
+            headers: { accept: 'application/x-msgpack' },
+            body: null,
+        }
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual('application/x-msgpack')
+        expect(ctx.body).toEqual(msgpack.encode(null))
+    })
+
+    it('should handle null values in xml', async () => {
+        const ctx: any = {
+            headers: { accept: 'application/xml' },
+            body: null,
+        }
+        await accepts()(ctx, nxt)
+        expect(ctx.type).toEqual('application/xml')
+        expect(ctx.body).toEqual(xml(null))
+    })
 })
