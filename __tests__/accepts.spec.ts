@@ -2,8 +2,6 @@ import accepts from '../src'
 import * as yaml from 'js-yaml'
 import * as msgpack from 'msgpack-lite'
 
-const xml = require('jsontoxml')
-
 const nxt = () => null
 
 describe('accepts', () => {
@@ -54,16 +52,6 @@ describe('accepts', () => {
         await accepts()(ctx, nxt)
         expect(ctx.type).toEqual('application/x-msgpack')
         expect(ctx.body).toEqual(msgpack.encode({ hi: 'ho' }))
-    })
-
-    it('should encode xml', async () => {
-        const ctx: any = {
-            headers: { accept: 'application/xml' },
-            body: { hi: 'ho' },
-        }
-        await accepts()(ctx, nxt)
-        expect(ctx.type).toEqual('application/xml')
-        expect(ctx.body).toEqual(xml({ hi: 'ho' }))
     })
 
     it('should respect msgpack priority', async () => {
@@ -228,13 +216,4 @@ describe('accepts', () => {
         expect(ctx.body).toEqual(msgpack.encode(null))
     })
 
-    it('should handle null values in xml', async () => {
-        const ctx: any = {
-            headers: { accept: 'application/xml' },
-            body: null,
-        }
-        await accepts()(ctx, nxt)
-        expect(ctx.type).toEqual('application/xml')
-        expect(ctx.body).toEqual(xml(null))
-    })
 })

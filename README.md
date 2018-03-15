@@ -9,7 +9,6 @@ Supported formats:
 * `application/yaml`: YAML
 * `application/x-msgpack`: MsgPack
 * `application/json`: JSON.stringify
-* `application/xml,text/xml`: XML
 
 If anything else it will fall back to doing what koa normally does (JSON).
 

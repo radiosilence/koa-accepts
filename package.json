@@ -1,6 +1,6 @@
 {
   "name": "koa-accepts",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "Adjust content type based on accepts header",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,6 @@
     "@types/msgpack-lite": "0.1.6",
     "@types/negotiator": "0.6.1",
     "js-yaml": "3.10.0",
-    "jsontoxml": "1.0.0",
     "koa": "2.4.1",
     "lodash": "4.17.4",
     "msgpack-lite": "0.1.26",
