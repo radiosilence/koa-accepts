@@ -4,9 +4,8 @@
     "mocha": true,
     "node": true
   },
-  "extends": [
-    "tslint:latest"
-  ],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "rulesDirectory": ["tslint-plugin-prettier"],
   "globals": {
     "React": true
   },
@@ -16,97 +15,39 @@
     }
   },
   "rules": {
-    "align": [
-      true,
-      "parameters",
-      "arguments",
-      "statements"
-    ],
-    "array-type": [
-      true,
-      "array"
-    ],
-    "arrow-parens": [
-      "ban-single-arg-parens"
-    ],
-    "arrow-return-shorthand": [
-      true,
-      "multiline"
-    ],
+    "prettier": true,
+    "array-type": [true, "array"],
+    "arrow-return-shorthand": [true, "multiline"],
     "class-name": true,
-    "comment-format": [
-      false
-    ],
-    "curly": [
-      true,
-      "ignore-same-line"
-    ],
+    "comment-format": true,
+    "curly": [true, "ignore-same-line"],
     "eofline": false,
-    "indent": [
-      true,
-      "spaces"
-    ],
-    "interface-name": [
-      true,
-      "never-prefix"
-    ],
+    "interface-name": [true, "never-prefix"],
     "jsx-alignment": false,
     "jsx-boolean-value": false,
     "jsx-no-multiline-js": false,
     "jsx-wrap-multiline": false,
     "no-submodule-imports": false,
-    "max-classes-per-file": [
-      false
-    ],
-    "max-line-length": [
-      false
-    ],
+    "max-classes-per-file": [false],
     "no-conditional-assignment": true,
-    "no-console": [
-      false
-    ],
+    "no-console": [false],
     "no-duplicate-variable": true,
     "no-empty": false,
     "no-empty-interface": false,
     "no-invalid-template-strings": true,
     "no-namespace": false,
-    "no-object-literal-type-assertion": false,
-    "no-shadowed-variable": false,
+    "no-shadowed-variable": true,
     "no-string-literal": true,
-    "no-trailing-whitespace": true,
-    "no-unused-variable": false,
-    "no-use-before-declare": false,
+    "no-unused-variable": true,
+    "no-use-before-declare": true,
     "no-var-keyword": true,
     "no-var-requires": false,
     "object-literal-shorthand": true,
     "object-literal-sort-keys": false,
-    "only-arrow-functions": [
-      false
-    ],
-    "ordered-imports": [
-      false
-    ],
-    "prefer-for-of": false,
+    "only-arrow-functions": [false],
+    "ordered-imports": [false],
     "prefer-template": true,
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double"
-    ],
-    "semicolon": [
-      true,
-      "never"
-    ],
-    "trailing-comma": [
-      true,
-      {
-        "multiline": "always",
-        "singleline": "never"
-      }
-    ],
-    "triple-equals": [
-      true
-    ],
-    "variable-name": false
+    "triple-equals": [true],
+    "variable-name": true
   }
 }

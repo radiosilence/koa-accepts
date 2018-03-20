@@ -5,7 +5,6 @@ import * as msgpack from 'msgpack-lite'
 const nxt = () => null
 
 describe('accepts', () => {
-
     it('should not do anything for a */* request', async () => {
         const ctx: any = {
             headers: {},
@@ -56,7 +55,9 @@ describe('accepts', () => {
 
     it('should respect msgpack priority', async () => {
         const ctx: any = {
-            headers: { accept: 'application/yaml;q=0.1, application/x-msgpack;q=1.0' },
+            headers: {
+                accept: 'application/yaml;q=0.1, application/x-msgpack;q=1.0',
+            },
             body: { hi: 'ho' },
         }
         await accepts()(ctx, nxt)
@@ -66,7 +67,9 @@ describe('accepts', () => {
 
     it('should respect yaml priority', async () => {
         const ctx: any = {
-            headers: { accept: 'application/x-msgpack;q=0.1, application/yaml;q=1.0' },
+            headers: {
+                accept: 'application/x-msgpack;q=0.1, application/yaml;q=1.0',
+            },
             body: { hi: 'ho' },
         }
         await accepts()(ctx, nxt)
@@ -76,7 +79,9 @@ describe('accepts', () => {
 
     it('should respect order priority msgpack vs yaml', async () => {
         const ctx: any = {
-            headers: { accept: 'application/x-msgpack;q=1.0, application/yaml;q=1.0' },
+            headers: {
+                accept: 'application/x-msgpack;q=1.0, application/yaml;q=1.0',
+            },
             body: { hi: 'ho' },
         }
         await accepts()(ctx, nxt)
@@ -86,7 +91,9 @@ describe('accepts', () => {
 
     it('should respect order priority yaml vs msgpack', async () => {
         const ctx: any = {
-            headers: { accept: 'application/yaml;q=1.0, application/x-msgpack;q=1.0,' },
+            headers: {
+                accept: 'application/yaml;q=1.0, application/x-msgpack;q=1.0,',
+            },
             body: { hi: 'ho' },
         }
         await accepts()(ctx, nxt)
@@ -96,7 +103,9 @@ describe('accepts', () => {
 
     it('should respect order priority json vs msgpack', async () => {
         const ctx: any = {
-            headers: { accept: 'application/json;q=1.0, application/x-msgpack;q=0.2,' },
+            headers: {
+                accept: 'application/json;q=1.0, application/x-msgpack;q=0.2,',
+            },
             body: { hi: 'ho' },
         }
         await accepts()(ctx, nxt)
@@ -106,7 +115,9 @@ describe('accepts', () => {
 
     it('should respect order priority json vs yaml', async () => {
         const ctx: any = {
-            headers: { accept: 'application/json;q=1.0, application/yaml;q=0.2,' },
+            headers: {
+                accept: 'application/json;q=1.0, application/yaml;q=0.2,',
+            },
             body: { hi: 'ho' },
         }
         await accepts()(ctx, nxt)
@@ -117,7 +128,11 @@ describe('accepts', () => {
     it('should strip undefined values from json', async () => {
         const ctx: any = {
             headers: { accept: 'application/json' },
-            body: { hi: 'ho', potato: undefined, foo: { whee: undefined, a: 1 } },
+            body: {
+                hi: 'ho',
+                potato: undefined,
+                foo: { whee: undefined, a: 1 },
+            },
         }
         await accepts()(ctx, nxt)
         expect(ctx.type).toEqual('application/json')
@@ -127,7 +142,11 @@ describe('accepts', () => {
     it('should strip undefined values from yaml', async () => {
         const ctx: any = {
             headers: { accept: 'application/yaml' },
-            body: { hi: 'ho', potato: undefined, foo: { whee: undefined, a: 1 } },
+            body: {
+                hi: 'ho',
+                potato: undefined,
+                foo: { whee: undefined, a: 1 },
+            },
         }
         await accepts()(ctx, nxt)
         expect(ctx.type).toEqual('application/yaml')
@@ -137,7 +156,11 @@ describe('accepts', () => {
     it('should strip undefined values from msgpack', async () => {
         const ctx: any = {
             headers: { accept: 'application/x-msgpack' },
-            body: { hi: 'ho', potato: undefined, foo: { whee: undefined, a: 1 } },
+            body: {
+                hi: 'ho',
+                potato: undefined,
+                foo: { whee: undefined, a: 1 },
+            },
         }
         await accepts()(ctx, nxt)
         expect(ctx.type).toEqual('application/x-msgpack')
@@ -215,5 +238,4 @@ describe('accepts', () => {
         expect(ctx.type).toEqual('application/x-msgpack')
         expect(ctx.body).toEqual(msgpack.encode(null))
     })
-
 })
