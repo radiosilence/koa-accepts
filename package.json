@@ -32,7 +32,7 @@
     "@types/msgpack-lite": "0.1.6",
     "@types/negotiator": "0.6.1",
     "js-yaml": "3.10.0",
-    "koa": "2.4.1",
+    "koa": "2.13.0",
     "lodash": "4.17.4",
     "msgpack-lite": "0.1.26",
     "negotiator": "0.6.1"
